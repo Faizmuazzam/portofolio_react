@@ -1,0 +1,164 @@
+.header {
+    .headContent {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        
+        height: 80px;
+        background-color: #313131;
+        width: 100%;
+        .headLeft {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: calc(70% - 125px);
+            padding-left: 25px;
+            padding-right: 95px;
+            .leftContent {
+                .viewBrand {
+                    .navbaBrand {
+                        img {
+                            max-height: 34px;
+                        }
+                    }
+                }
+            }
+
+            .rightContent {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 65px;
+                .separator {
+                    width: 60px;
+                    height: 1px;
+                    background-color: rgba($color: #fff, $alpha: 0.2);
+                }
+
+                .headContact {
+                    display: flex;
+                    align-items: center;
+                    gap: 40px;
+                    .nav-item {
+                        .nav-link {
+                            padding: 0;
+                            font-size: 10px;
+                            text-transform: uppercase;
+                            color: rgba($color: #fff, $alpha: 0.5);
+                            letter-spacing: 4px;
+                            span {
+                                color: #f57500;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .headRight {
+            width: calc(30% + 125px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            .headToggle {
+                width: 125px;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba($color: #fff, $alpha: 0.05);
+                padding-top: 10px;
+                .contentToggle {
+                    padding: 0;
+                    .btnToggle {
+                        width: 28px;
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        gap: 6px;
+                        padding: 0;
+                        border: unset;
+                        .icToggle {
+                            display: flex;
+                            height: 2px;
+                            width: 100%;
+                            &:first-of-type {
+                                justify-content: flex-end;
+                            }
+                            span {
+                                display: block;
+                                &.t01 {
+                                    width: 60%;
+                                    height: 2px;
+                                    background-color: #fff;
+                                    text-align: end;
+                                    float: right;
+                                }
+
+                                &.t02 {
+                                    width: 100%;
+                                    height: 2px;
+                                    background-color: #fff;
+                                }
+
+                                &.t03 {
+                                    width: 60%;
+                                    height: 2px;
+                                    background-color: #fff;
+                                }
+                            }
+                        }
+                    }
+
+                    .nameToggle {
+                        margin-top: 5px;
+                        span {
+                            font-size: 10px;
+                            font-weight: 400;
+                            text-transform: uppercase;
+                            letter-spacing: 2px;
+                            color: rgba($color: #fff, $alpha: 0.5);
+                        }
+                    }
+                }
+            }
+
+            .headTitle {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                background-color: #f57500;
+                width: calc(100% - 125px);
+                height: 100%;
+                padding-right: 80px;
+                gap: 30px;
+                .separator {
+                    width: 50px;
+                    height: 1px;
+                    background-color: rgba($color: #fff, $alpha: 0.5);
+                }
+
+                .namePage {
+                    padding: 10px 20px;
+                    position: relative;
+                    display: block;
+                    background-color: rgba($color: #000000, $alpha: 0.1);
+                    span {
+                        color: #fff;
+                        letter-spacing: 4px;
+                        font-size: 10px;
+                        font-weight: 400;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+    }
+}
