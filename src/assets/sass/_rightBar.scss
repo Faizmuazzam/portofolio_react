@@ -1,0 +1,128 @@
+.rightBarHome {
+    position: fixed;
+    top: 0;
+    right: 0;
+    .inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 80px;
+        height: 100vh;
+        padding-top: 80px;
+        .topDecorTheme {
+            width: 100%;
+            height: 150px;
+            background-color: #f57500;
+            display: flex;
+            justify-content: center;
+            .separator {
+                position: relative;
+                bottom: calc(65px - 170px);
+                display: block;
+                width: 1px;
+                height: 170px;
+                background-color: rgba($color: #fff, $alpha: 0.2);
+            }
+        }
+
+        .midDecorTheme {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            .innerMid {
+                text-align: center;
+                .boxRoundScroll {
+                    width: 20px;
+                    height: 30px;
+                    border: 1px solid rgba($color: #fff, $alpha: 0.2);
+                    border-radius: 6px;
+                    display: flex;
+                    justify-content: center;
+                    .roundAnim {
+                        position: relative;
+                        top: 6px;
+                        width: 4px;
+                        height: 4px;
+                        background-color: #f57500;
+                        border-radius: 50%;
+                        animation-name: scroll;
+                        animation-duration: 2.2s;
+                        animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
+                        animation-iteration-count: infinite;
+                    }
+                }
+                .arrowBottom {
+                    margin-top: 25px;
+                    text-align: center;
+                    color: #f57500;
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .bottomDecorTheme {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 180px;
+            width: 100%;
+            background-color: rgba($color: #fff, $alpha: 0.05);
+            .slideNav {
+                flex-direction: column;
+                gap: 3px;
+                .nav-item {
+                    height: max-content;
+                    .controlSlider {
+                        position: relative;
+                        height: 6px;
+                        width: 6px;
+                        background-color: #fff;
+                        border-radius: 50%;
+                        transition: 0.5s;
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            top: 0px;
+                            right: 0px;
+                            left: 0px;
+                            bottom: 0px;
+                            border: 0px;
+                            // width: 0;
+                            // height: 0;
+                            border-radius: 50%;
+                            transition: .5s ease-in-out;
+                        }
+                        &.active {
+                            border: unset;
+                            background-color: #f57500;
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                top: -6px;
+                                right: -6px;
+                                left: -6px;
+                                bottom: -6px;
+                                border: 1px solid rgba($color: #fff, $alpha: 0.4);
+                                border-radius: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes scroll {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+}

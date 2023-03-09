@@ -8,7 +8,7 @@
         top: 0;
         left: 0;
         right: 0;
-        
+
         height: 80px;
         background-color: #313131;
         width: 100%;
@@ -53,6 +53,13 @@
                             letter-spacing: 4px;
                             span {
                                 color: #f57500;
+                                transition: 0.2s;
+                            }
+
+                            &:hover {
+                                span {
+                                    color: #fff;
+                                }
                             }
                         }
                     }
@@ -116,7 +123,6 @@
                             }
                         }
                     }
-
                     .nameToggle {
                         margin-top: 5px;
                         span {
@@ -125,6 +131,14 @@
                             text-transform: uppercase;
                             letter-spacing: 2px;
                             color: rgba($color: #fff, $alpha: 0.5);
+                            transition: 0.2s;
+                        }
+                    }
+                    &:hover {
+                        .nameToggle {
+                            span {
+                                color: rgba($color: #f57500, $alpha: 1);
+                            }
                         }
                     }
                 }

@@ -35,15 +35,15 @@ const Header = () => {
           </div>
           <div className='rightContent'>
             <div className='separator'></div>
-            <ul class="nav headContact">
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  01. CALL <span>+4(897)56412322</span>
+            <ul className="nav headContact">
+              <li className="nav-item">
+                <a className="nav-link" href="https:wa.me/+6281912940523" target={'_blank'}>
+                  01. Whatsapp <span>+6281912940523</span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  02. WRITE <span>ZONAR@DOMAIN.COM</span>
+              <li className="nav-item">
+                <a className="nav-link" href="#">
+                  02. WRITE <span>FaizMuazzam</span>
                 </a>
               </li>
             </ul>

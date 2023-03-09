@@ -4,8 +4,135 @@ body {
     font-weight: 400;
     font-size: 13px;
     height: 100%;
-    text-align: center;
     background: #313131;
     color: #000;
     font-family: "Mukta Vaani", sans-serif;
+}
+
+.btn {
+    padding: 0;
+    &:focus {
+        border: unset;
+        box-shadow: unset;
+    }
+}
+
+.btn.btnTheme {
+    padding: 15px 38px;
+    position: relative;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 800;
+    background-color: #f57500;
+    border-radius: 0;
+    border: none;
+    overflow: hidden;
+    .ico {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        transform: translateX(-20px);
+        transition: 0.3s ease-in-out;
+        svg {
+            font-size: 12px;
+            color: #f57500;
+        }
+    }
+    span {
+        position: relative;
+        z-index: 1;
+    }
+    &:hover {
+        .ico {
+            transform: translateX(10px);
+        }
+        &::before {
+            width: 100%;
+        }
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        width: 0;
+        background-color: #3c3c3c;
+        transition: 0.3s ease-in-out;
+    }
+
+    &:focus {
+        color: #fff;
+    } 
+}
+
+.bgArrow {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    height: 150px;
+    width: 150px;
+    background-color: #f57500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .sliderProgress {
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            top: calc(50% - 3px);
+            left: calc(50% - 3px);
+            // margin: -6px 0 0 -3px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            z-index: 2;
+            background: #fff;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 100px;
+            right: -14px;
+            top: -64px;
+            background: rgba(255, 255, 255, 0.4);
+            transform: rotate(45deg);
+            z-index: 1;
+        }
+
+        .vProgress {
+            svg.circ {
+                --progress: 0;
+                stroke-dashoffset: calc(125 * (1 - var(--progress)));
+                stroke-dasharray: 125;
+                transform: rotate(-90deg);
+                stroke: var(--swiper-theme-color);
+                // transition: 0.3s;
+            }
+        }
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 80px;
+        height: 80px;
+        box-sizing: border-box;
+        border-top: 1px solid rgba(255, 255, 255, 0.4);
+        border-right: 1px solid rgba(255, 255, 255, 0.4);
+    }
 }
