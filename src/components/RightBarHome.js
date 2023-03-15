@@ -1,10 +1,10 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 
-const RightBarHome = ({children}) => {
+const RightBarHome = ({ children, classCustom, classFullH }) => {
     return (
         <section className='rightBarHome'>
-            <div className='inner'>
+            <div className={`inner ${classFullH}`}>
                 <div className='topDecorTheme'>
                     <div className='separator'></div>
                 </div>
@@ -18,7 +18,7 @@ const RightBarHome = ({children}) => {
                         </div>
                     </div>
                 </div>
-                <div className='bottomDecorTheme'>
+                <div className={`bottomDecorTheme ${classCustom}`}>
                     {children}
                 </div>
             </div>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, Fragment, useRef } from 'react';
 
 
-import { Icon } from '@iconify/react'; import OverlayArrow from '../../components/OverlayArrow';
+import { Icon } from '@iconify/react';
+import OverlayArrow from '../../components/OverlayArrow';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Parallax, Autoplay, Mousewheel, EffectFade, Pagination } from "swiper";
@@ -351,7 +352,6 @@ const Home = () => {
                                 }
                             </button>
                         </div>
-
 
                         <div className='captionNumb'>
                             <div className='separator'></div>
