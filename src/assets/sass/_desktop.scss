@@ -428,6 +428,7 @@
                 max-width: 824px;
                 margin: 0 auto;
                 padding: 0;
+
                 .boxContent {
                     position: relative;
                     z-index: 1;
@@ -508,6 +509,7 @@
     }
 
     .sectionAbout02 {
+        position: relative;
         padding-bottom: 80px;
         .boxContent {
             margin-top: 35px;
@@ -633,6 +635,7 @@
     }
 
     .sectionAbout03 {
+        position: relative;
         padding-bottom: 80px;
         .boxContent {
             margin-top: 35px;
@@ -745,6 +748,7 @@
     }
 
     .sectionAbout04 {
+        position: relative;
         padding-bottom: 80px;
         .boxContent {
             margin-top: 35px;
@@ -830,6 +834,89 @@
                                 margin: 10px 0;
                             }
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    .sectionAbout05 {
+        position: relative;
+        .boxContent {
+            margin-top: 60px;
+            .sliderTestimony {
+                .slick-track {
+                    padding-bottom: 5px;
+                }
+                .slick-slide {
+                    transform: scale(0.8);
+                    transition: all 0.3s ease-in-out;
+                    &.slick-active {
+                        transform: scale(1);
+                        .itemTesti {
+                            background-color: #fff;
+                        }
+                    }
+                    .itemTesti {
+                        max-width: 400px;
+                        padding: 25px 30px 25px;
+                        padding-top: 15px;
+                        margin: 0 15px;
+                        border: 1px solid #eee;
+                        background-color: #f1f1f1;
+                        transition: all 0.3s ease-in-out;
+                        .headItem {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            .headProfile {
+                                display: flex;
+                                align-items: center;
+                                gap: 20px;
+                                img {
+                                    max-height: 50px;
+                                    border-radius: 50%;
+                                }
+
+                                span {
+                                    font-size: 16px;
+                                    font-weight: 600;
+                                    font-family: "Mukta Vaani", sans-serif;
+                                }
+                            }
+
+                            .headItemNumber {
+                                span {
+                                    color: #f57500;
+                                    font-family: "Oswald", sans-serif;
+                                    font-size: 18px;
+                                }
+                            }
+                        }
+
+                        .descItem {
+                            padding-top: 15px;
+                            p {
+                                &:last-of-type {
+                                    margin-bottom: 0;
+                                }
+
+                                // padding-bottom: 10px;
+                                font-family: "Mukta Vaani", sans-serif;
+                                font-style: italic;
+                                font-size: 13px;
+                                color: #666;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .listClient {
+                .itemClient {
+                    a.btn {
+                        display: block;
+                        padding: 30px 50px;
                     }
                 }
             }

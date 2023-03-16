@@ -11,6 +11,10 @@ import { Navigation, Parallax, Autoplay, Mousewheel, EffectFade, Pagination, Fre
 import 'swiper/css';
 import 'swiper/css/bundle';
 
+
+// Import css files
+
+
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Filler } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
@@ -37,6 +41,12 @@ import imgClient02 from '../../assets/images/about/img_client_02.png';
 import imgClient03 from '../../assets/images/about/img_client_03.png';
 import imgClient04 from '../../assets/images/about/img_client_04.png';
 import { map } from 'jquery';
+import { Form } from 'react-router-dom';
+
+import Slider from "react-slick";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
 
@@ -46,15 +56,15 @@ import { map } from 'jquery';
 const About = () => {
   ChartJS.register(ArcElement, Tooltip, Legend, Filler);
 
-  const configContentScroll = {
-    direction: 'vertical',
-    slidesPerView: 'auto',
-    freeMode: true,
-    scrollbar: true,
-    mousewheel: true,
-    modules: [FreeMode, Scrollbar, Mousewheel],
-    className: "swipperContentList"
-  }
+  // const configContentScroll = {
+  //   direction: 'vertical',
+  //   slidesPerView: 'auto',
+  //   freeMode: true,
+  //   scrollbar: true,
+  //   mousewheel: true,
+  //   modules: [FreeMode, Scrollbar, Mousewheel],
+  //   className: "swipperContentList"
+  // }
 
   const configContentTeam = {
     // direction: 'vertical',
@@ -67,7 +77,20 @@ const About = () => {
     effect: "slide",
     speed: 500,
     modules: [],
-    className: "swipperTeamList"
+    className: "swipperTeamList",
+    onSlideChangeTransitionEnd: () => {
+      console.log('test');
+    }
+  }
+
+  const configTesti = {
+    className: "center",
+    centerMode: true,
+    infinite: true,
+    // slidesToShow: 3,
+    variableWidth: true,
+    speed: 500,
+    dots: true
   }
 
   const dataService = [
@@ -276,192 +299,322 @@ const About = () => {
     }
   ]
 
-  // const pieConfig = {
-  //     // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-  //     datasets: [
-  //         {
-  //             label: '# of Votes',
-  //             data: [85, 25],
-  //             backgroundColor: [
-  //                 '#f57500',
-  //                 '#eeeeee',
-  //             ],
-  //             borderWidth: 0,
-  //         },
-  //     ],
-  // };
 
-  const configTesti = {
-    // direction: 'vertical',
-    slidesPerView: 3,
-    // loop: true,
-    // freeMode: true,
-    // scrollbar: true,
-    // mousewheel: true,
-    // slidesPerView: 'auto',
-    centeredSlides: true,
-    // spaceBetween: 30,
-    effect: "slide",
-    speed: 500,
-    modules: [],
-    className: "swipperTestiList"
-  }
+
   return (
     <Fragment>
       <RightBarHome classCustom='noBg' classFullH='noFull' />
       <div className='sectionAbout'>
         <div className='rowContent'>
           <div className='contentLeft'>
-            <Swiper {...configContentScroll}>
-              <SwiperSlide>
-                <section className='sectionAbout01'>
-                  <div className='contentNumber'>
-                    <span>01.</span>
-                  </div>
-                  <div className='container'>
-                    <HeaderText01>
-                      <h3>Some   Words About Me</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.  </p>
-                    </HeaderText01>
-                    <div className='boxContent'>
-                      <div className='row'>
-                        <div className='col-md-5'>
-                          <div className='imageProfile'>
-                            <img src={imgAbout001} alt="Image Profile" className='img img-fluid' />
+            {/* <Swiper {...configContentScroll}>
+              <SwiperSlide> */}
+            <section className='sectionAbout01'>
+              <div className='contentNumber'>
+                <span>01.</span>
+              </div>
+              <div className='container'>
+                <HeaderText01>
+                  <h3>Some   Words About Me</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.  </p>
+                </HeaderText01>
+                <div className='boxContent'>
+                  <div className='row'>
+                    <div className='col-md-5'>
+                      <div className='imageProfile'>
+                        <img src={imgAbout001} alt="Image Profile" className='img img-fluid' />
+                      </div>
+                    </div>
+                    <div className='col-md-7'>
+                      <div className='contentText'>
+                        <div className='contentProfile'>
+                          <div className="title">
+                            <h3>
+                              Innovative solutions to boost <br />
+                              <span> your creative </span> projects
+                            </h3>
+                          </div>
+                          <div className='desc'>
+                            <p>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat fermentum.
+                            </p>
+                            <p>
+                              Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa.
+                            </p>
                           </div>
                         </div>
-                        <div className='col-md-7'>
-                          <div className='contentText'>
-                            <div className='contentProfile'>
-                              <div className="title">
-                                <h3>
-                                  Innovative solutions to boost <br />
-                                  <span> your creative </span> projects
-                                </h3>
-                              </div>
-                              <div className='desc'>
-                                <p>
-                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat fermentum.
-                                </p>
-                                <p>
-                                  Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa.
-                                </p>
-                              </div>
-                            </div>
-                            <div className='contentCreation'>
-                              <div className='row'>
-                                <div className='col'>
-                                  <div className='itemCount'>
-                                    <div className='numCount'>
-                                      <span>145</span>
-                                    </div>
-                                    <div className='info'>
-                                      <span>Finished projects</span>
-                                    </div>
-                                  </div>
+                        <div className='contentCreation'>
+                          <div className='row'>
+                            <div className='col'>
+                              <div className='itemCount'>
+                                <div className='numCount'>
+                                  <span>145</span>
                                 </div>
-                                <div className='col'>
-                                  <div className='itemCount'>
-                                    <div className='numCount'>
-                                      <span>825</span>
-                                    </div>
-                                    <div className='info'>
-                                      <span>Working hours</span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className='col'>
-                                  <div className='itemCount'>
-                                    <div className='numCount'>
-                                      <span>15</span>
-                                    </div>
-                                    <div className='info'>
-                                      <span>Awards won</span>
-                                    </div>
-                                  </div>
+                                <div className='info'>
+                                  <span>Finished projects</span>
                                 </div>
                               </div>
                             </div>
-                            <div className='viewButton'>
-                              <a href="" className='btn btnTheme'>
-                                <div className='ico'>
-                                  <Icon icon="ep:arrow-right-bold" />
+                            <div className='col'>
+                              <div className='itemCount'>
+                                <div className='numCount'>
+                                  <span>825</span>
                                 </div>
-                                <span>
-                                  My Portofolio
-                                </span>
-                              </a>
+                                <div className='info'>
+                                  <span>Working hours</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div className='col'>
+                              <div className='itemCount'>
+                                <div className='numCount'>
+                                  <span>15</span>
+                                </div>
+                                <div className='info'>
+                                  <span>Awards won</span>
+                                </div>
+                              </div>
                             </div>
                           </div>
+                        </div>
+                        <div className='viewButton'>
+                          <a href="" className='btn btnTheme'>
+                            <div className='ico'>
+                              <Icon icon="ep:arrow-right-bold" />
+                            </div>
+                            <span>
+                              My Portofolio
+                            </span>
+                          </a>
                         </div>
                       </div>
-
-
                     </div>
                   </div>
-                </section>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className='separatorLine'>
-                  <div className="separator"></div>
+
+
                 </div>
-                <section className='sectionAbout02'>
-                  <div className='contentNumber'>
-                    <span>02.</span>
+              </div>
+            </section>
+
+            <div className='separatorLine'>
+              <div className="separator"></div>
+            </div>
+            <section className='sectionAbout02'>
+              <div className='contentNumber'>
+                <span>02.</span>
+              </div>
+              <div className='container'>
+                <HeaderText01>
+                  <h3>Services Provided</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.  </p>
+                </HeaderText01>
+                <div className='boxContent'>
+                  <div className='row'>
+                    {
+                      dataService.map((value, index) => {
+                        return (
+                          <div className='col-md-6' key={value.id}>
+                            <div className='itemService'>
+                              <div className='viewSmallNumber'>
+                                <span>0{value.id}.</span>
+                              </div>
+                              <div className='boxItem'>
+                                <div className='headItem'>
+                                  {value.icon}
+                                  <h3>{value.title}</h3>
+                                </div>
+                                <div className='desc'>
+                                  <p>{value.intro}</p>
+                                </div>
+                                <div className='viewDetail'>
+                                  <button className='btn p-0'>
+                                    <Icon icon="ph:plus-bold" /> Details
+                                  </button>
+                                </div>
+                                <div className='separator'></div>
+                              </div>
+                              <div className='boxDescItem'>
+                                <div className='headDesc'>
+                                  <ul className='nav'>
+                                    <li className='nav-item'>
+                                      <a href="#" className='nav-link'>
+                                        Concept
+                                      </a>
+                                    </li>
+                                    <li className='nav-item'>
+                                      <a href="#" className='nav-link'>
+                                        Design
+                                      </a>
+                                    </li>
+                                    <li className='nav-item'>
+                                      <a href="#" className='nav-link'>
+                                        3D Modeling
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div className='desc'>
+                                  <p>{value.desc}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      })
+                    }
                   </div>
-                  <div className='container'>
-                    <HeaderText01>
-                      <h3>Services Provided</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.  </p>
-                    </HeaderText01>
-                    <div className='boxContent'>
-                      <div className='row'>
-                        {
-                          dataService.map((value, index) => {
-                            return (
-                              <div className='col-md-6' key={value.id}>
-                                <div className='itemService'>
-                                  <div className='viewSmallNumber'>
+                  <div className='viewGetContact'>
+                    <h4>Ready to order your project ? Visit my contacts page :  </h4>
+                    <div className='viewBtnContact'>
+                      <button className='btn btnTheme'>
+                        <div className='ico'>
+                          <Icon icon="ep:arrow-right-bold" />
+                        </div>
+                        <span>Contacts</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <div className='separatorLine'>
+              <div className="separator"></div>
+            </div>
+            <section className='sectionAbout03'>
+              <div className='contentNumber'>
+                <span>03.</span>
+              </div>
+              <div className='container'>
+                <HeaderText01>
+                  <h3>
+                    My Awesome Team
+                  </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.
+                  </p>
+                </HeaderText01>
+                <div className='boxContent'>
+                  <div className='slideTeam'>
+                    <Swiper {...configContentTeam}>
+                      {
+                        dataTeam.map((value, index) => {
+                          return (
+                            <SwiperSlide key={value.id}>
+                              <div className='itemTeam'>
+                                <div className='boxImage'>
+                                  <div className='overlay'></div>
+                                  <div className='viewImage'>
+                                    <img src={value.pict} alt="" className='img img-fluid' />
+                                  </div>
+                                  <div className='number'>
                                     <span>0{value.id}.</span>
                                   </div>
-                                  <div className='boxItem'>
-                                    <div className='headItem'>
-                                      {value.icon}
-                                      <h3>{value.title}</h3>
-                                    </div>
-                                    <div className='desc'>
-                                      <p>{value.intro}</p>
-                                    </div>
-                                    <div className='viewDetail'>
-                                      <button className='btn p-0'>
-                                        <Icon icon="ph:plus-bold" /> Details
-                                      </button>
-                                    </div>
-                                    <div className='separator'></div>
+                                  <div className='listSosmed'>
+                                    <ul className="nav">
+                                      <li className="nav-item">
+                                        <a className="nav-link" href="#">
+                                          <Icon icon="ri:facebook-fill" />
+                                        </a>
+                                      </li>
+                                      <li className="nav-item">
+                                        <a className="nav-link" href="#">
+                                          <Icon icon="mdi:instagram" />
+                                        </a>
+                                      </li>
+                                      <li className="nav-item">
+                                        <a className="nav-link" href="#">
+                                          <Icon icon="mdi:twitter" />
+                                        </a>
+                                      </li>
+                                      <li className="nav-item">
+                                        <a className="nav-link" href="#">
+                                          <Icon icon="mdi:linkedin" />
+                                        </a>
+                                      </li>
+                                    </ul>
                                   </div>
-                                  <div className='boxDescItem'>
-                                    <div className='headDesc'>
-                                      <ul className='nav'>
-                                        <li className='nav-item'>
-                                          <a href="#" className='nav-link'>
-                                            Concept
-                                          </a>
-                                        </li>
-                                        <li className='nav-item'>
-                                          <a href="#" className='nav-link'>
-                                            Design
-                                          </a>
-                                        </li>
-                                        <li className='nav-item'>
-                                          <a href="#" className='nav-link'>
-                                            3D Modeling
-                                          </a>
-                                        </li>
-                                      </ul>
+                                </div>
+                                <div className='boxDesc'>
+                                  <div className='name'>
+                                    <h4>{value.name}</h4>
+                                  </div>
+                                  <div className='job'>
+                                    <span>{value.job}</span>
+                                  </div>
+                                  <div className='desc'>
+                                    <p>
+                                      {value.desc}
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </SwiperSlide>
+                          )
+                        })
+                      }
+                    </Swiper>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <div className='separatorLine'>
+              <div className="separator"></div>
+            </div>
+            <section className='sectionAbout04'>
+              <div className='contentNumber'>
+                <span>04.</span>
+              </div>
+              <div className='container'>
+                <HeaderText01>
+                  <h3>
+                    Developer  and  Language  Skills
+                  </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.
+                  </p>
+                </HeaderText01>
+                <div className='boxContent'>
+                  <div className='row'>
+                    <div className='col-md-9'>
+                      <div className='boxSkill'>
+                        {
+                          dataSoftSkill.map((value, index) => {
+                            return (
+                              <div className='itemSkill'>
+                                <div className='label'>
+                                  <div className='labelLeft'>
+                                    <span>{value.label}</span>
+                                  </div>
+                                  <div className='labelRight'>
+                                    <span>{value.score}%</span>
+                                  </div>
+                                </div>
+                                <div className='valueSkill'>
+                                  <div className='getValueSkill' style={{ width: `${value.score}%` }}></div>
+                                </div>
+                              </div>
+                            )
+                          })
+                        }
+                      </div>
+                    </div>
+                    <div className='col-md-3'>
+                      <div className='boxSkillLanguage'>
+                        {
+                          dataLang.map((value, index) => {
+                            return (
+                              <div className='itemLangSkill'>
+                                <div className='boxItem'>
+                                  <div className='viewPie'>
+                                    <Doughnut data={value.config} />
+                                    <div className='viewScore'>
+                                      <span>{value.score}<small>%</small></span>
                                     </div>
-                                    <div className='desc'>
-                                      <p>{value.desc}</p>
-                                    </div>
+                                  </div>
+                                  <div className='langInit'>
+                                    <span>{value.lang}</span>
                                   </div>
                                 </div>
                               </div>
@@ -469,237 +622,74 @@ const About = () => {
                           })
                         }
                       </div>
-                      <div className='viewGetContact'>
-                        <h4>Ready to order your project ? Visit my contacts page :  </h4>
-                        <div className='viewBtnContact'>
-                          <button className='btn btnTheme'>
-                            <div className='ico'>
-                              <Icon icon="ep:arrow-right-bold" />
-                            </div>
-                            <span>Contacts</span>
-                          </button>
-                        </div>
-                      </div>
                     </div>
                   </div>
-                </section>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className='separatorLine'>
-                  <div className="separator"></div>
                 </div>
-                <section className='sectionAbout03'>
-                  <div className='contentNumber'>
-                    <span>03.</span>
-                  </div>
-                  <div className='container'>
-                    <HeaderText01>
-                      <h3>
-                        My Awesome Team
-                      </h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.
-                      </p>
-                    </HeaderText01>
-                    <div className='boxContent'>
-                      <div className='slideTeam'>
-                        <Swiper {...configContentTeam}>
-                          {
-                            dataTeam.map((value, index) => {
-                              return (
-                                <SwiperSlide key={value.id}>
-                                  <div className='itemTeam'>
-                                    <div className='boxImage'>
-                                      <div className='overlay'></div>
-                                      <div className='viewImage'>
-                                        <img src={value.pict} alt="" className='img img-fluid' />
-                                      </div>
-                                      <div className='number'>
-                                        <span>0{value.id}.</span>
-                                      </div>
-                                      <div className='listSosmed'>
-                                        <ul className="nav">
-                                          <li className="nav-item">
-                                            <a className="nav-link" href="#">
-                                              <Icon icon="ri:facebook-fill" />
-                                            </a>
-                                          </li>
-                                          <li className="nav-item">
-                                            <a className="nav-link" href="#">
-                                              <Icon icon="mdi:instagram" />
-                                            </a>
-                                          </li>
-                                          <li className="nav-item">
-                                            <a className="nav-link" href="#">
-                                              <Icon icon="mdi:twitter" />
-                                            </a>
-                                          </li>
-                                          <li className="nav-item">
-                                            <a className="nav-link" href="#">
-                                              <Icon icon="mdi:linkedin" />
-                                            </a>
-                                          </li>
-                                        </ul>
-                                      </div>
-                                    </div>
-                                    <div className='boxDesc'>
-                                      <div className='name'>
-                                        <h4>{value.name}</h4>
-                                      </div>
-                                      <div className='job'>
-                                        <span>{value.job}</span>
-                                      </div>
-                                      <div className='desc'>
-                                        <p>
-                                          {value.desc}
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </SwiperSlide>
-                              )
-                            })
-                          }
-                        </Swiper>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className='separatorLine'>
-                  <div className="separator"></div>
-                </div>
-                <section className='sectionAbout04'>
-                  <div className='contentNumber'>
-                    <span>04.</span>
-                  </div>
-                  <div className='container'>
-                    <HeaderText01>
-                      <h3>
-                        Developer  and  Language  Skills
-                      </h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.
-                      </p>
-                    </HeaderText01>
-                    <div className='boxContent'>
-                      <div className='row'>
-                        <div className='col-md-9'>
-                          <div className='boxSkill'>
-                            {
-                              dataSoftSkill.map((value, index) => {
-                                return (
-                                  <div className='itemSkill'>
-                                    <div className='label'>
-                                      <div className='labelLeft'>
-                                        <span>{value.label}</span>
-                                      </div>
-                                      <div className='labelRight'>
-                                        <span>{value.score}%</span>
-                                      </div>
-                                    </div>
-                                    <div className='valueSkill'>
-                                      <div className='getValueSkill' style={{ width: `${value.score}%` }}></div>
-                                    </div>
-                                  </div>
-                                )
-                              })
-                            }
-                          </div>
-                        </div>
-                        <div className='col-md-3'>
-                          <div className='boxSkillLanguage'>
-                            {
-                              dataLang.map((value, index) => {
-                                return (
-                                  <div className='itemLangSkill'>
-                                    <div className='boxItem'>
-                                      <div className='viewPie'>
-                                        <Doughnut data={value.config} />
-                                        <div className='viewScore'>
-                                          <span>{value.score}<small>%</small></span>
-                                        </div>
-                                      </div>
-                                      <div className='langInit'>
-                                        <span>{value.lang}</span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                )
-                              })
-                            }
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className='separatorLine'>
-                  <div className="separator"></div>
-                </div>
-                <section className='sectionAbout05'>
-                  <div className='contentNumber'>
-                    <span>05.</span>
-                  </div>
-                  <div className='container'>
-                    <HeaderText01>
-                      <h3>
-                        CLENTS AND TESTIMONILAS
-                      </h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.
-                      </p>
-                    </HeaderText01>
-                    <div className='boxContent'>
-                      <div className='sliderTestimony'>
-                        <Swiper {...configTesti}>
-                          {dataTesti.map((value, index) => {
-                            return (
-                              <SwiperSlide key={value.id}>
-                                <div className='itemTesti'>
-                                  <div className='headItem'>
-                                    <div className='headProfile'>
-                                      <img src={value.pict} alt="" className='img img-fluid' />
-                                      <span>
-                                        {value.name}
-                                      </span>
-                                    </div>
-                                    <div className='headItemNumber'>
-                                      <span>0{index}.</span>
-                                    </div>
-                                  </div>
-                                  <div className='descItem'>
-                                    <p>{value.desc}</p>
-                                  </div>
-                                </div>
-                              </SwiperSlide>
-                            )
-                          })}
-                        </Swiper>
-                      </div>
-                      <div className='listClient'>
-                        <div className='row'>
-                          {dataClient.map((value, index) => {
-                            return (
-                              <div className='col-md-3 col-6'>
-                                <div className="itemClient">
-                                  <a href="" className='btn p-0'>
-                                    <img src={value.pict} alt="" className='img img-fluid' />
-                                  </a>
-                                </div>
+              </div>
+            </section>
+
+            <div className='separatorLine'>
+              <div className="separator"></div>
+            </div>
+            <section className='sectionAbout05'>
+              <div className='contentNumber'>
+                <span>05.</span>
+              </div>
+              <div className='container'>
+                <HeaderText01>
+                  <h3>
+                    CLENTS AND TESTIMONILAS
+                  </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.
+                  </p>
+                </HeaderText01>
+                <div className='boxContent'>
+                  <div className='sliderTestimony'>
+                    <Slider {...configTesti}>
+                      {dataTesti.map((value, index) => {
+                        return (
+
+                          <div className='itemTesti' key={value.id}>
+                            <div className='headItem'>
+                              <div className='headProfile'>
+                                <img src={value.pict} alt="" className='img img-fluid' />
+                                <span>
+                                  {value.name}
+                                </span>
                               </div>
-                            )
-                          })}
-                        </div>
-                      </div>
+                              <div className='headItemNumber'>
+                                <span>0{value.id}.</span>
+                              </div>
+                            </div>
+                            <div className='descItem'>
+                              <p>{value.desc}</p>
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </Slider>
+                  </div>
+                  <div className='listClient'>
+                    <div className='row'>
+                      {dataClient.map((value, index) => {
+                        return (
+                          <div className='col-md-3 col-6'>
+                            <div className="itemClient">
+                              <a href="" className='btn'>
+                                <img src={value.pict} alt="" className='img img-fluid' />
+                              </a>
+                            </div>
+                          </div>
+                        )
+                      })}
                     </div>
                   </div>
-                </section>
-              </SwiperSlide>
-            </Swiper>
+                </div>
+              </div>
+            </section>
+            {/* </SwiperSlide>
+            </Swiper> */}
           </div>
           <div className='contentRight'>
 
