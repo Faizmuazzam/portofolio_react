@@ -38,7 +38,7 @@ const FooterInside = () => {
                     </ul>
 
                     <div className='btnPageTop'>
-                        <a href="" className='btn p-0'>
+                        <a href="#" className='btn p-0'>
                             <Icon icon="material-symbols:arrow-back-ios-new-rounded" rotate={1} />
                         </a>
                     </div>

@@ -58,6 +58,7 @@ import "slick-carousel/slick/slick-theme.css";
 const About = () => {
 
   const [indexActive, setIndexActive] = useState(0);
+  const [inSwipper, setInSwipper] = useState(null);
 
   ChartJS.register(ArcElement, Tooltip, Legend, Filler);
 
@@ -327,6 +328,7 @@ const About = () => {
       setIndexActive(swiper.realIndex);
       // setParallaxSwiper(swiper);
       // setiSwipper(swiper);
+      setInSwipper(swiper);
 
     }
   }
@@ -758,7 +760,7 @@ const About = () => {
                   {
                     dataMainSlider.map((value, index) => {
                       return (
-                        <li className='nav-item' key={value.id}>
+                        <li className='nav-item' key={value.id} onClick={() => console.log('click')}>
                           <button className={`nav-link ${(value.id === (indexActive + 1)) ? 'active' : ''}`}></button>
                         </li>
                       )
