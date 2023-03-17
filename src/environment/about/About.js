@@ -1,7 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 
 import HeaderText01 from '../../components/HeaderText01';
 import RightBarHome from '../../components/RightBarHome';
+import FooterInside from '../../components/FooterInside';
+
 
 import { Icon } from '@iconify/react';
 
@@ -54,37 +56,24 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 const About = () => {
+
+  const [indexActive, setIndexActive] = useState(0);
+
   ChartJS.register(ArcElement, Tooltip, Legend, Filler);
 
-  // const configContentScroll = {
-  //   direction: 'vertical',
-  //   slidesPerView: 'auto',
-  //   freeMode: true,
-  //   scrollbar: true,
-  //   mousewheel: true,
-  //   modules: [FreeMode, Scrollbar, Mousewheel],
-  //   className: "swipperContentList"
-  // }
-
   const configContentTeam = {
-    // direction: 'vertical',
-    slidesPerView: 2,
-    // loop: true,
-    // freeMode: true,
-    // scrollbar: true,
-    // mousewheel: true,
-    spaceBetween: 30,
-    effect: "slide",
+    className: "slickCustom",
+    // centerMode: true,
+    // centerPadding: '20px',
+    infinite: true,
+    slidesToShow: 2,
+    // variableWidth: true,
     speed: 500,
-    modules: [],
-    className: "swipperTeamList",
-    onSlideChangeTransitionEnd: () => {
-      console.log('test');
-    }
+    // dots: true
   }
 
   const configTesti = {
-    className: "center",
+    className: "slickCustom",
     centerMode: true,
     infinite: true,
     // slidesToShow: 3,
@@ -251,7 +240,7 @@ const About = () => {
         ],
       }
     }
-  ]
+  ];
 
   const dataTesti = [
     {
@@ -278,7 +267,7 @@ const About = () => {
       name: 'Andy Dimasky',
       desc: '"Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor. Duis autem vel eum  sit amet semiriure dolor consectetur adipiscing elit."'
     }
-  ]
+  ];
 
   const dataClient = [
     {
@@ -297,8 +286,55 @@ const About = () => {
       id: 4,
       pict: imgClient04
     }
+  ];
+
+  const dataMainSlider = [
+    {
+      id: 1,
+      pict: imgSlide1,
+    },
+    {
+      id: 2,
+      pict: imgSlide2,
+    },
+    {
+      id: 3,
+      pict: imgSlide3,
+    },
+    // {
+    //   id: 4,
+    //   pict: imgSlide4,
+    // }
   ]
 
+  const configMainSlider = {
+    modules: [Navigation, Parallax, Autoplay, Mousewheel, Pagination, EffectFade],
+    parallax: true,
+    loop: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    speed: 500,
+    spaceBetween: 0,
+    effect: "fade",
+    onSlideChange: (swiper) => {
+      // console.log(indexActive);
+      setIndexActive(swiper.realIndex);
+    },
+
+    onSwiper: (swiper) => {
+      setIndexActive(swiper.realIndex);
+      // setParallaxSwiper(swiper);
+      // setiSwipper(swiper);
+
+    }
+  }
+
+
+  useEffect(() => {
+    document.title = 'About - Faiz Muazzam'
+  });
 
 
   return (
@@ -307,9 +343,9 @@ const About = () => {
       <div className='sectionAbout'>
         <div className='rowContent'>
           <div className='contentLeft'>
-            {/* <Swiper {...configContentScroll}>
-              <SwiperSlide> */}
-            <section className='sectionAbout01'>
+
+            {/* Section About 1 */}
+            <section className='sectionAbout01' id='about01'>
               <div className='contentNumber'>
                 <span>01.</span>
               </div>
@@ -395,11 +431,14 @@ const About = () => {
                 </div>
               </div>
             </section>
+            {/* End Section About 1 */}
 
+            {/* Section About 2 */}
             <div className='separatorLine'>
               <div className="separator"></div>
             </div>
-            <section className='sectionAbout02'>
+
+            <section className='sectionAbout02' id='about02'>
               <div className='contentNumber'>
                 <span>02.</span>
               </div>
@@ -477,11 +516,14 @@ const About = () => {
                 </div>
               </div>
             </section>
+            {/* End Section About 2 */}
 
+            {/* Section About 3 */}
             <div className='separatorLine'>
               <div className="separator"></div>
             </div>
-            <section className='sectionAbout03'>
+
+            <section className='sectionAbout03' id='about03'>
               <div className='contentNumber'>
                 <span>03.</span>
               </div>
@@ -496,73 +538,74 @@ const About = () => {
                 </HeaderText01>
                 <div className='boxContent'>
                   <div className='slideTeam'>
-                    <Swiper {...configContentTeam}>
+                    <Slider {...configContentTeam}>
                       {
                         dataTeam.map((value, index) => {
                           return (
-                            <SwiperSlide key={value.id}>
-                              <div className='itemTeam'>
-                                <div className='boxImage'>
-                                  <div className='overlay'></div>
-                                  <div className='viewImage'>
-                                    <img src={value.pict} alt="" className='img img-fluid' />
-                                  </div>
-                                  <div className='number'>
-                                    <span>0{value.id}.</span>
-                                  </div>
-                                  <div className='listSosmed'>
-                                    <ul className="nav">
-                                      <li className="nav-item">
-                                        <a className="nav-link" href="#">
-                                          <Icon icon="ri:facebook-fill" />
-                                        </a>
-                                      </li>
-                                      <li className="nav-item">
-                                        <a className="nav-link" href="#">
-                                          <Icon icon="mdi:instagram" />
-                                        </a>
-                                      </li>
-                                      <li className="nav-item">
-                                        <a className="nav-link" href="#">
-                                          <Icon icon="mdi:twitter" />
-                                        </a>
-                                      </li>
-                                      <li className="nav-item">
-                                        <a className="nav-link" href="#">
-                                          <Icon icon="mdi:linkedin" />
-                                        </a>
-                                      </li>
-                                    </ul>
-                                  </div>
+                            <div className='itemTeam' key={value.id}>
+                              <div className='boxImage'>
+                                <div className='overlay'></div>
+                                <div className='viewImage'>
+                                  <img src={value.pict} alt="" className='img img-fluid' />
                                 </div>
-                                <div className='boxDesc'>
-                                  <div className='name'>
-                                    <h4>{value.name}</h4>
-                                  </div>
-                                  <div className='job'>
-                                    <span>{value.job}</span>
-                                  </div>
-                                  <div className='desc'>
-                                    <p>
-                                      {value.desc}
-                                    </p>
-                                  </div>
+                                <div className='number'>
+                                  <span>0{value.id}.</span>
+                                </div>
+                                <div className='listSosmed'>
+                                  <ul className="nav">
+                                    <li className="nav-item">
+                                      <a className="nav-link" href="#">
+                                        <Icon icon="ri:facebook-fill" />
+                                      </a>
+                                    </li>
+                                    <li className="nav-item">
+                                      <a className="nav-link" href="#">
+                                        <Icon icon="mdi:instagram" />
+                                      </a>
+                                    </li>
+                                    <li className="nav-item">
+                                      <a className="nav-link" href="#">
+                                        <Icon icon="mdi:twitter" />
+                                      </a>
+                                    </li>
+                                    <li className="nav-item">
+                                      <a className="nav-link" href="#">
+                                        <Icon icon="mdi:linkedin" />
+                                      </a>
+                                    </li>
+                                  </ul>
                                 </div>
                               </div>
-                            </SwiperSlide>
+                              <div className='boxDesc'>
+                                <div className='name'>
+                                  <h4>{value.name}</h4>
+                                </div>
+                                <div className='job'>
+                                  <span>{value.job}</span>
+                                </div>
+                                <div className='desc'>
+                                  <p>
+                                    {value.desc}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
                           )
                         })
                       }
-                    </Swiper>
+                    </Slider>
                   </div>
                 </div>
               </div>
             </section>
+            {/* End Section About 3 */}
 
+            {/* Section About 4 */}
             <div className='separatorLine'>
               <div className="separator"></div>
             </div>
-            <section className='sectionAbout04'>
+
+            <section className='sectionAbout04' id='about04'>
               <div className='contentNumber'>
                 <span>04.</span>
               </div>
@@ -627,11 +670,14 @@ const About = () => {
                 </div>
               </div>
             </section>
+            {/* End Section About 4 */}
 
+            {/* Section About 5 */}
             <div className='separatorLine'>
               <div className="separator"></div>
             </div>
-            <section className='sectionAbout05'>
+
+            <section className='sectionAbout05' id='about05'>
               <div className='contentNumber'>
                 <span>05.</span>
               </div>
@@ -688,14 +734,67 @@ const About = () => {
                 </div>
               </div>
             </section>
-            {/* </SwiperSlide>
-            </Swiper> */}
+            {/* End Section About 5 */}
+
           </div>
           <div className='contentRight'>
-
+            <div className='contentSlider'>
+              <div className='overlay'></div>
+              <div className='bgArrow'>
+                <div className='sliderProgress'>
+                  <div className='vProgress autoplay-progress' slot="container-end">
+                    <svg className="circ" width="50" height="50" viewBox="0 0 48 48" id='sliderProgress'>
+                      <circle className="circ2" cx="24" cy="24" r="20" stroke="rgba(255,255,255,0.4)" strokeWidth="1" strokeDashoffset={0} fill="none"></circle>
+                      <circle className="circ1" cx="24" cy="24" r="20" stroke="#fff" strokeWidth="2" fill="none" ></circle>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div className='infoSlider'>
+                <span>Scroll Down</span>
+              </div>
+              <div className='indicatorSlide'>
+                <ul className='nav'>
+                  {
+                    dataMainSlider.map((value, index) => {
+                      return (
+                        <li className='nav-item' key={value.id}>
+                          <button className={`nav-link ${(value.id === (indexActive + 1)) ? 'active' : ''}`}></button>
+                        </li>
+                      )
+                    })
+                  }
+                </ul>
+              </div>
+              <div className='innerSlide'>
+                <Swiper {...configMainSlider}>
+                  {
+                    dataMainSlider.map((value, index) => {
+                      return (
+                        <SwiperSlide>
+                          <div className='itemSlider' key={value.id}>
+                            <div className='viewPict'>
+                              <img src={value.pict} alt="" className='img img-fluid' />
+                            </div>
+                          </div>
+                        </SwiperSlide>
+                      )
+                    })
+                  }
+                </Swiper>
+              </div>
+              <div className='textCaption'>
+                <h2>
+                  About My <br /> Studio
+                </h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.</p>
+              </div>
+              <div className="bottomBorderDecor"></div>
+            </div>
           </div>
         </div>
       </div>
+      <FooterInside />
     </Fragment>
   );
 }

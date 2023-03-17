@@ -1,0 +1,81 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 90;
+    width: calc(70% - 125px);
+    .boxNavigation {
+        position: relative;
+        background-color: #313131;
+        padding-left: 80px;
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            height: 75px;
+            .nav-item {
+                .nav-link {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+                    padding: 0;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    font-size: 10px;
+                    color: rgba($color: #fff, $alpha: 0.5);
+                    letter-spacing: 2px;
+                    transition: all 200ms linear;
+
+                    &:hover {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .btnPageTop {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: -75px;
+            height: 100%;
+            width: 75px;
+
+            .btn {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                width: 100%;
+                background-color: #313131;
+                border-radius: unset;
+                &:hover {
+                    &::before {
+                        height: 0;
+                    }
+                }
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    z-index: 0;
+                    height: 100%;
+                    background-color: #3c3c3c;
+                    transition: all 200ms linear;
+                }
+                svg {
+                    position: relative;
+                    z-index: 1;
+                    font-size: 18px;
+                    color: #f57500;
+                }
+            }
+        }
+    }
+}

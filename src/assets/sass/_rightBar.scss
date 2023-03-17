@@ -4,6 +4,7 @@
     right: 0;
     z-index: 90;
     .inner {
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -11,10 +12,22 @@
         height: 100vh;
         padding-top: 80px;
         &.noFull {
-            height: calc(100vh - 180px);
             background: #313131;
+            height: calc(70vh);
+            justify-content: flex-end;
             .midDecorTheme {
-                margin-top: 180px;
+                margin-top: 0px;
+                position: absolute;
+                bottom: 20%;
+                right: 0;
+                left: 0;
+            }
+
+            .topDecorTheme {
+                position: absolute;
+                top: 80px;
+                right: 0;
+                left: 0;
             }
         }
         .topDecorTheme {

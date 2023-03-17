@@ -437,8 +437,144 @@
         }
 
         .contentRight {
-            width: calc(30% + 149px);
-            background-color: #666;
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: calc(30% + 125px);
+            .contentSlider {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                font-family: "Mukta Vaani", sans-serif;
+                .overlay {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    bottom: 0;
+                    z-index: 1;
+                    background-color: rgba($color: #000000, $alpha: 0.4);
+                }
+                .bgArrow {
+                    top: 80px;
+                    right: 80px;
+                }
+                .infoSlider {
+                    position: absolute;
+                    top: 150px;
+                    right: 280px;
+                    z-index: 2;
+                    span {
+                        color: #fff;
+                        letter-spacing: 10px;
+                        font-size: 10px;
+                        text-transform: uppercase;
+                    }
+                }
+                .indicatorSlide {
+                    position: absolute;
+                    left: 56px;
+                    top: 154px;
+                    z-index: 2;
+                    .nav {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 30px;
+                        .nav-item {
+                            .nav-link {
+                                position: relative;
+                                width: 6.5px;
+                                height: 6.5px;
+                                padding: 0;
+                                margin: 0;
+                                background-color: #fff;
+                                border: unset;
+                                border-radius: 50%;
+                                &.active {
+                                    background-color: #f57500;
+                                    &::before {
+                                        content: "";
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        right: 0;
+                                        bottom: 0;
+                                        height: 18px;
+                                        width: 18px;
+                                        margin-top: -6px;
+                                        margin-left: -6px;
+                                        border: 1px solid rgba($color: #fff, $alpha: 0.4);
+                                        border-radius: 50%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .innerSlide {
+                    position: relative;
+                    z-index: 0;
+                    .itemSlider {
+                        .viewPict {
+                            img {
+                                height: 100vh;
+                                object-fit: cover;
+                            }
+                        }
+                    }
+                }
+
+                .textCaption {
+                    position: absolute;
+                    bottom: 90px;
+                    left: 120px;
+                    right: 50px;
+                    z-index: 2;
+                    h2 {
+                        position: relative;
+                        padding-bottom: 20px;
+                        margin-bottom: 0;
+                        color: #fff;
+                        font-size: 65px;
+                        font-weight: 900;
+                        font-family: "Oswald", sans-serif;
+                        text-transform: uppercase;
+                        line-height: 70px;
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            left: 0;
+                            top: -40px;
+                            width: 50px;
+                            height: 4px;
+                            background: #f57500;
+                        }
+                    }
+
+                    p {
+                        max-width: 450px;
+                        margin-bottom: 0;
+                        padding-bottom: 10px;
+                        font-family: "Roboto", sans-serif;
+                        font-size: 12px;
+                        line-height: 24px;
+                        color: #fff;
+                        font-weight: 500;
+                    }
+                }
+
+                .bottomBorderDecor {
+                    position: absolute;
+                    left: 120px;
+                    right: 40px;
+                    bottom: 30px;
+                    z-index: 5;
+                    height: calc(30% - 100px);
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+                    border-right: 1px solid rgba(255, 255, 255, 0.4);
+                }
+            }
         }
     }
 
@@ -640,7 +776,9 @@
         .boxContent {
             margin-top: 35px;
             .slideTeam {
+                margin: 0 -10px;
                 .itemTeam {
+                    padding: 0 10px;
                     .boxImage {
                         position: relative;
                         overflow: hidden;
@@ -842,6 +980,7 @@
 
     .sectionAbout05 {
         position: relative;
+        padding-bottom: calc(80px + 75px);
         .boxContent {
             margin-top: 60px;
             .sliderTestimony {
@@ -910,13 +1049,62 @@
                         }
                     }
                 }
+
+                .slick-dots {
+                    display: flex !important;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 20px;
+                    bottom: -40px;
+                    height: 12px;
+                    li {
+                        position: relative;
+                        margin: 0;
+                        height: 6px;
+                        width: 6px;
+                        &.slick-active {
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+                                width: 18px;
+                                height: 18px;
+                                margin-top: -6px;
+                                margin-left: -6px;
+                                border: 1px solid rgba($color: #000, $alpha: 0.1);
+                                border-radius: 50%;
+                            }
+
+                            button {
+                                background-color: #f57500;
+                            }
+                        }
+                        button {
+                            width: 6px;
+                            height: 6px;
+                            padding: 0;
+                            margin: 0;
+                            background-color: #ccc;
+                            border-radius: 50%;
+                            font-size: 0;
+
+                            &::before {
+                                content: unset;
+                            }
+                        }
+                    }
+                }
             }
 
             .listClient {
+                margin-top: 80px;
                 .itemClient {
                     a.btn {
                         display: block;
-                        padding: 30px 50px;
+                        padding: 20px 40px;
                     }
                 }
             }
