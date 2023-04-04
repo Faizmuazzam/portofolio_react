@@ -42,7 +42,6 @@ import imgClient01 from '../../assets/images/about/img_client_01.png';
 import imgClient02 from '../../assets/images/about/img_client_02.png';
 import imgClient03 from '../../assets/images/about/img_client_03.png';
 import imgClient04 from '../../assets/images/about/img_client_04.png';
-import { map } from 'jquery';
 import { Form } from 'react-router-dom';
 
 import Slider from "react-slick";
@@ -178,7 +177,7 @@ const About = () => {
     },
 
     {
-      id: 5,
+      id: 6,
       label: 'React js',
       score: 90
     }
@@ -333,9 +332,21 @@ const About = () => {
     }
   }
 
+  const [valScroll, setValScroll] = useState(0);
+
 
   useEffect(() => {
-    document.title = 'About - Faiz Muazzam'
+    document.title = 'About - Faiz Muazzam';
+
+    window.onscroll = () => {
+      let hContent = document.body.offsetHeight - window.innerHeight;
+      let posContent = window.scrollY;
+      let getScroll = (posContent / hContent) * 1;
+      setValScroll(getScroll);
+
+      const elSliderProgress = document.getElementById('sliderProgress');
+      elSliderProgress.style.setProperty('--progress', getScroll)
+    }
   });
 
 
@@ -627,7 +638,7 @@ const About = () => {
                         {
                           dataSoftSkill.map((value, index) => {
                             return (
-                              <div className='itemSkill'>
+                              <div className='itemSkill' key={value.id}>
                                 <div className='label'>
                                   <div className='labelLeft'>
                                     <span>{value.label}</span>
@@ -650,7 +661,7 @@ const About = () => {
                         {
                           dataLang.map((value, index) => {
                             return (
-                              <div className='itemLangSkill'>
+                              <div className='itemLangSkill' key={value.id}>
                                 <div className='boxItem'>
                                   <div className='viewPie'>
                                     <Doughnut data={value.config} />
@@ -722,7 +733,7 @@ const About = () => {
                     <div className='row'>
                       {dataClient.map((value, index) => {
                         return (
-                          <div className='col-md-3 col-6'>
+                          <div className='col-md-3 col-6' key={value.id}>
                             <div className="itemClient">
                               <a href="" className='btn'>
                                 <img src={value.pict} alt="" className='img img-fluid' />
@@ -773,8 +784,8 @@ const About = () => {
                   {
                     dataMainSlider.map((value, index) => {
                       return (
-                        <SwiperSlide>
-                          <div className='itemSlider' key={value.id}>
+                        <SwiperSlide key={value.id}>
+                          <div className='itemSlider' >
                             <div className='viewPict'>
                               <img src={value.pict} alt="" className='img img-fluid' />
                             </div>
